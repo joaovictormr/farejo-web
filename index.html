@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarejoApp - Descubra o que você procura</title>
-    <meta name="description" content="FarejoApp - A melhor plataforma para descobrir e encontrar o que você precisa">
+    <title>Farejô - O app que conecta você ao mundo pet</title>
+    <meta name="description" content="Farejô - A plataforma completa para tutores de pets: encontre estabelecimentos pet-friendly, ajude na busca por pets perdidos e descubra oportunidades de adoção">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #f59e0b;
+            --primary-color: #4a8072;
+            --primary-dark: #3a6b5d;
+            --primary-light: #e6f2ee;
             --background: #ffffff;
-            --surface: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
+            --surface: #f9fafb;
+            --text-primary: #374151;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --success: #6fc04d;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
@@ -28,7 +29,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Nunito', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--background);
@@ -50,6 +51,8 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
+            display: block;
+            padding: 16px 0;
         }
 
         nav {
@@ -60,9 +63,15 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
         }
 
         .nav-links {
@@ -84,15 +93,15 @@
 
         .hero {
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--surface) 0%, rgba(99, 102, 241, 0.05) 100%);
+            background: linear-gradient(135deg, var(--surface) 0%, var(--primary-light) 100%);
             text-align: center;
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--success));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -179,21 +188,16 @@
         }
 
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .feature-card h3 {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            color: var(--primary-color);
         }
 
         .feature-card p {
@@ -220,7 +224,7 @@
         }
 
         .footer-section a {
-            color: #cbd5e1;
+            color: #d1d5db;
             text-decoration: none;
             display: block;
             margin-bottom: 0.5rem;
@@ -234,7 +238,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid #374151;
+            border-top: 1px solid #4b5563;
             color: #9ca3af;
         }
 
@@ -266,7 +270,9 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">FarejoApp</div>
+            <div class="logo">
+                <img src="assets/images/logo-name.png" alt="Farejô">
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
                 <li><a href="#features">Recursos</a></li>
@@ -280,8 +286,8 @@
     <main>
         <section class="hero" id="home">
             <div class="container">
-                <h1>Descubra o Extraordinário</h1>
-                <p>FarejoApp é sua plataforma definitiva para descobrir, explorar e encontrar exatamente o que você procura. Uma experiência única de busca e descoberta.</p>
+                <h1>O mundo pet na palma da sua mão</h1>
+                <p>Farejô é a plataforma completa para tutores de pets. Encontre estabelecimentos pet-friendly, ajude na busca por pets perdidos, descubra oportunidades de adoção e muito mais.</p>
                 <div class="cta-buttons">
                     <a href="#features" class="btn btn-primary">Conheça os Recursos</a>
                     <a href="contact.html" class="btn btn-secondary">Entre em Contato</a>
@@ -291,37 +297,37 @@
 
         <section class="features" id="features">
             <div class="container">
-                <h2>Por que escolher o FarejoApp?</h2>
+                <h2>Por que escolher o Farejô?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
+                        <div class="feature-icon">🏪</div>
+                        <h3>Estabelecimentos Pet-Friendly</h3>
+                        <p>Descubra pet shops, clínicas veterinárias, hotéis para pets, restaurantes pet-friendly e muito mais perto de você.</p>
+                    </div>
+                    <div class="feature-card">
                         <div class="feature-icon">🔍</div>
-                        <h3>Busca Inteligente</h3>
-                        <p>Algoritmos avançados que entendem exatamente o que você precisa, oferecendo resultados precisos e relevantes.</p>
+                        <h3>Busca por Pets Perdidos</h3>
+                        <p>Ajude a comunidade pet! Registre pets perdidos, relate avistamentos e contribua para reunir famílias.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Velocidade Extrema</h3>
-                        <p>Resultados instantâneos com nossa tecnologia de alta performance. Encontre o que precisa em segundos.</p>
+                        <div class="feature-icon">🏠</div>
+                        <h3>Adoção Responsável</h3>
+                        <p>Conecte-se com ONGs e abrigos para encontrar seu novo companheiro ou ajude um pet a encontrar um lar amoroso.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3>Precisão Absoluta</h3>
-                        <p>Filtros avançados e personalização inteligente para garantir que você encontre exatamente o que procura.</p>
+                        <div class="feature-icon">🎉</div>
+                        <h3>Eventos Pet</h3>
+                        <p>Fique por dentro de feiras de adoção, campanhas de vacinação, encontros de tutores e eventos especiais.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🌟</div>
-                        <h3>Experiência Única</h3>
-                        <p>Interface intuitiva e moderna que torna a descoberta uma experiência prazerosa e eficiente.</p>
+                        <div class="feature-icon">🛍️</div>
+                        <h3>Produtos e Ofertas</h3>
+                        <p>Descubra produtos especiais, ofertas exclusivas e novidades para mimar seu companheiro de quatro patas.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Segurança Total</h3>
-                        <p>Seus dados são protegidos com as mais altas tecnologias de segurança e criptografia.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3>Multi-plataforma</h3>
-                        <p>Acesse de qualquer dispositivo - web, mobile ou desktop. Sua experiência sincronizada em todos os lugares.</p>
+                        <div class="feature-icon">❤️</div>
+                        <h3>Seus Favoritos</h3>
+                        <p>Salve estabelecimentos, pets para adoção e eventos de seu interesse para acessar rapidamente quando precisar.</p>
                     </div>
                 </div>
             </div>
@@ -332,8 +338,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>FarejoApp</h4>
-                    <p>Descubra o extraordinário com nossa plataforma inovadora de busca e descoberta.</p>
+                    <h4>Farejô</h4>
+                    <p>Conectando você ao mundo pet com amor, cuidado e responsabilidade.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Links Úteis</h4>
@@ -348,11 +354,11 @@
                 </div>
                 <div class="footer-section">
                     <h4>Conecte-se</h4>
-                    <a href="mailto:contato@farejoapp.com.br">contato@farejoapp.com.br</a>
+                    <a href="mailto:contato@farejo.app">contato@farejo.app</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FarejoApp. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
