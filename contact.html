@@ -99,85 +99,18 @@
         }
 
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            display: flex;
+            justify-content: center;
             margin-top: 3rem;
-        }
-
-        .contact-form {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .contact-form h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 128, 114, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
         }
 
         .contact-info {
             background: var(--surface);
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 16px;
             border: 1px solid var(--border);
+            max-width: 500px;
+            width: 100%;
         }
 
         .contact-info h2 {
@@ -298,9 +231,8 @@
         }
 
         @media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .contact-info {
+                padding: 2rem;
             }
 
             .contact-hero h1 {
@@ -327,49 +259,12 @@
         <div class="container">
             <div class="contact-hero">
                 <h1>Entre em Contato</h1>
-                <p>Estamos aqui para ajudar você e seu pet! Entre em contato conosco para qualquer dúvida, sugestão ou suporte.</p>
+                <p>Para dúvidas, sugestões ou suporte, entre em contato conosco através do nosso e-mail. Responderemos o mais breve possível!</p>
             </div>
 
             <div class="contact-content">
-                <div class="contact-form">
-                    <h2>Envie sua Mensagem</h2>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nome Completo *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-mail *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Assunto *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Selecione um assunto</option>
-                                <option value="suporte">Suporte Técnico</option>
-                                <option value="pet-perdido">Pet Perdido/Encontrado</option>
-                                <option value="adocao">Adoção</option>
-                                <option value="estabelecimento">Cadastro de Estabelecimento</option>
-                                <option value="evento">Divulgação de Evento</option>
-                                <option value="parceria">Parcerias</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensagem *</label>
-                            <textarea id="message" name="message" placeholder="Descreva sua dúvida ou mensagem aqui..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
-                </div>
-
                 <div class="contact-info">
-                    <h2>Informações de Contato</h2>
+                    <h2>Como nos Encontrar</h2>
                     
                     <div class="info-item">
                         <div class="info-icon">📧</div>
@@ -386,6 +281,14 @@
                             <p>Fortaleza, CE, Brasil</p>
                         </div>
                     </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">💬</div>
+                        <div class="info-content">
+                            <h3>Assuntos que Atendemos</h3>
+                            <p>Suporte técnico, pets perdidos/encontrados, adoção, parcerias, feedback e muito mais!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -397,36 +300,6 @@
         </div>
     </footer>
 
-    <script>
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('span');
-                
-                answer.classList.toggle('show');
-                icon.textContent = answer.classList.contains('show') ? '−' : '+';
-            });
-        });
 
-        // Form Submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.name || !data.email || !data.subject || !data.message) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            e.target.reset();
-        });
-    </script>
 </body>
 </html> 
