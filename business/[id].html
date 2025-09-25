@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estabelecimento - Farejô</title>
+
+    <!-- Meta tags padrão -->
+    <meta name="description" content="Conheça este estabelecimento no Farejô - A plataforma completa para tutores de pets">
+
+    <!-- Meta tags Open Graph para redes sociais -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Estabelecimento - Farejô">
+    <meta property="og:description" content="Conheça este estabelecimento no Farejô">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="Farejô">
+
+    <!-- Meta tags Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@farejoapp">
+    <meta name="twitter:title" content="Estabelecimento - Farejô">
+    <meta name="twitter:description" content="Conheça este estabelecimento no Farejô">
+    <meta name="twitter:image" content="">
+
+    <!-- Meta tags WhatsApp -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a8072;
+            --primary-dark: #3a6b5d;
+            --primary-light: #e6f2ee;
+            --background: #ffffff;
+            --surface: #f9fafb;
+            --text-primary: #374151;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 600px;
+            background: var(--surface);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), #6fc04d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .loading {
+            margin: 2rem 0;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #ef4444;
+            background: #fef2f2;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #fecaca;
+            margin: 1rem 0;
+        }
+
+        .business-info {
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .business-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .business-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .business-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--primary-light);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🐾</div>
+        <h1>Farejô</h1>
+        <p class="subtitle">Conectando você ao mundo pet</p>
+
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>Carregando informações do estabelecimento...</p>
+        </div>
+
+        <div id="business-content" style="display: none;">
+            <div id="business-info" class="business-info"></div>
+            <a href="#" id="open-app-btn" class="btn">Abrir no Farejô</a>
+        </div>
+
+        <div id="error-content" style="display: none;">
+            <div class="error">
+                <p><strong>Ops!</strong> Não foi possível carregar as informações do estabelecimento.</p>
+            </div>
+            <a href="/" class="btn">Voltar ao Início</a>
+        </div>
+    </div>
+
+    <script>
+        // Extrair ID da URL
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        const businessId = pathSegments[pathSegments.length - 1];
+
+        // URL da API pública
+        const API_BASE_URL = 'https://dev-api.farejoapp.com.br'; // Ajuste conforme sua API
+
+        async function loadBusinessData() {
+            if (!businessId) {
+                showError();
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/businesses/${businessId}`);
+
+                if (!response.ok) {
+                    throw new Error('Estabelecimento não encontrado');
+                }
+
+                const business = await response.json();
+                displayBusiness(business);
+                updateMetaTags(business);
+
+            } catch (error) {
+                console.error('Erro ao carregar estabelecimento:', error);
+                showError();
+            }
+        }
+
+        function displayBusiness(business) {
+            const businessInfo = document.getElementById('business-info');
+            const openAppBtn = document.getElementById('open-app-btn');
+
+            // Criar conteúdo do estabelecimento
+            businessInfo.innerHTML = `
+                ${business.profileImageUrl ?
+                    `<img src="${business.profileImageUrl}" alt="${business.name}" class="business-image">` :
+                    '<div class="business-image" style="background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🏪</div>'
+                }
+                <h2>${business.name}</h2>
+                <p><strong>Tipo:</strong> ${business.types?.map(t => t.name).join(', ') || 'Estabelecimento Pet'}</p>
+                <p><strong>Localização:</strong> ${business.address?.city || 'Não informada'}, ${business.address?.state || ''}</p>
+                ${business.description ? `<p><strong>Sobre:</strong> ${business.description}</p>` : ''}
+            `;
+
+            // Configurar botão para abrir no app
+            const deepLink = `farejo://business/${businessId}`;
+            const fallbackUrl = `https://farejoapp.com.br/business/${businessId}`;
+
+            openAppBtn.href = deepLink;
+            openAppBtn.onclick = function(e) {
+                e.preventDefault();
+
+                // Tentar abrir o app
+                window.location = deepLink;
+
+                // Se não conseguir abrir o app, mostrar opções de download
+                setTimeout(() => {
+                    if (confirm('O app Farejô não está instalado. Deseja baixá-lo agora?')) {
+                        // Detectar plataforma e redirecionar para a loja correspondente
+                        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                            window.open('https://apps.apple.com/app/farejo'); // URL da App Store
+                        } else {
+                            window.open('https://play.google.com/store/apps/details?id=com.petprojectapp'); // URL do Play Store
+                        }
+                    }
+                }, 1000);
+            };
+
+            // Mostrar conteúdo
+            document.querySelector('.loading').style.display = 'none';
+            document.getElementById('business-content').style.display = 'block';
+        }
+
+        function updateMetaTags(business) {
+            // Atualizar título da página
+            document.title = `${business.name} - Farejô`;
+
+            // Atualizar meta tags
+            updateMetaTag('description', `Conheça ${business.name} no Farejô - ${business.description || 'Estabelecimento pet-friendly'}`);
+            updateMetaTag('og:title', `${business.name} - Farejô`);
+            updateMetaTag('og:description', business.description || `Conheça ${business.name} no Farejô`);
+            updateMetaTag('og:url', window.location.href);
+            updateMetaTag('twitter:title', `${business.name} - Farejô`);
+            updateMetaTag('twitter:description', business.description || `Conheça ${business.name} no Farejô`);
+
+            if (business.profileImageUrl || business.galleryImages?.[0]) {
+                const imageUrl = business.profileImageUrl || business.galleryImages[0];
+                updateMetaTag('og:image', imageUrl);
+                updateMetaTag('twitter:image', imageUrl);
+            }
+        }
+
+        function updateMetaTag(property, content) {
+            let metaTag = document.querySelector(`meta[property="${property}"]`) ||
+                         document.querySelector(`meta[name="${property}"]`);
+
+            if (!metaTag) {
+                metaTag = document.createElement('meta');
+                if (property.startsWith('og:') || property.startsWith('twitter:')) {
+                    metaTag.setAttribute('property', property);
+                } else {
+                    metaTag.setAttribute('name', property);
+                }
+                document.head.appendChild(metaTag);
+            }
+
+            metaTag.setAttribute('content', content);
+        }
+
+        function showError() {
+            document.querySelector('.loading').style.display = 'none';
+            document.getElementById('error-content').style.display = 'block';
+        }
+
+        // Carregar dados ao inicializar
+        loadBusinessData();
+    </script>
+</body>
+</html>
