@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profissional - Farejô</title>
+    <title id="page-title">Profissional - Farejô</title>
 
     <!-- Meta tags padrão -->
-    <meta name="description" content="Conheça este profissional no Farejô - A plataforma completa para tutores de pets">
+    <meta name="description" id="meta-description" content="Conheça este profissional no Farejô - A plataforma completa para tutores de pets">
 
     <!-- Meta tags Open Graph para redes sociais -->
     <meta property="og:type" content="profile">
-    <meta property="og:title" content="Profissional - Farejô">
-    <meta property="og:description" content="Conheça este profissional no Farejô">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
+    <meta property="og:title" id="og-title" content="Profissional - Farejô">
+    <meta property="og:description" id="og-description" content="Conheça este profissional no Farejô">
+    <meta property="og:image" id="og-image" content="https://farejoapp.com.br/assets/images/logo-name.png">
+    <meta property="og:url" id="og-url" content="">
     <meta property="og:site_name" content="Farejô">
 
     <!-- Meta tags Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@farejoapp">
-    <meta name="twitter:title" content="Profissional - Farejô">
-    <meta name="twitter:description" content="Conheça este profissional no Farejô">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" id="twitter-title" content="Profissional - Farejô">
+    <meta name="twitter:description" id="twitter-description" content="Conheça este profissional no Farejô">
+    <meta name="twitter:image" id="twitter-image" content="https://farejoapp.com.br/assets/images/logo-name.png">
 
     <!-- Meta tags WhatsApp -->
     <meta property="og:image:width" content="1200">
@@ -262,15 +262,22 @@
             const professionalInfo = document.getElementById('professional-info');
             const openAppBtn = document.getElementById('open-app-btn');
 
+            // Encontrar imagem de perfil
+            const profileImage = professional.images?.find(img => img.type === 'PROFILE');
+            const imageUrl = profileImage?.url;
+
+            // Extrair especialidades
+            const specialities = professional.categories?.[0]?.specialities?.map(s => s.speciality.label) || [];
+
             // Criar conteúdo do profissional
             professionalInfo.innerHTML = `
-                ${professional.profileImageUrl ?
-                    `<img src="${professional.profileImageUrl}" alt="${professional.name}" class="professional-image">` :
+                ${imageUrl ?
+                    `<img src="${imageUrl}" alt="${professional.name}" class="professional-image">` :
                     '<div class="professional-image" style="background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🧑‍⚕️</div>'
                 }
                 <h2>${professional.name}</h2>
-                <p><strong>Especialidades:</strong> ${professional.specialities?.map(s => s.name).join(', ') || 'Não informado'}</p>
-                <p><strong>Localização:</strong> ${professional.address?.city || 'Não informada'}, ${professional.address?.state || ''}</p>
+                <p><strong>Especialidades:</strong> ${specialities.join(', ') || 'Não informado'}</p>
+                <p><strong>Localização:</strong> ${professional.city || 'Não informada'}, ${professional.state || ''}</p>
                 ${professional.description ? `<p><strong>Sobre:</strong> ${professional.description}</p>` : ''}
             `;
 
@@ -303,6 +310,10 @@
         }
 
         function updateMetaTags(professional) {
+            // Encontrar imagem de perfil
+            const profileImage = professional.images?.find(img => img.type === 'PROFILE');
+            const imageUrl = profileImage?.url || 'https://farejoapp.com.br/assets/images/logo-name.png';
+
             // Atualizar título da página
             document.title = `${professional.name} - Farejô`;
 
@@ -311,14 +322,10 @@
             updateMetaTag('og:title', `${professional.name} - Farejô`);
             updateMetaTag('og:description', professional.description || `Conheça ${professional.name} no Farejô`);
             updateMetaTag('og:url', window.location.href);
+            updateMetaTag('og:image', imageUrl);
             updateMetaTag('twitter:title', `${professional.name} - Farejô`);
             updateMetaTag('twitter:description', professional.description || `Conheça ${professional.name} no Farejô`);
-
-            if (professional.profileImageUrl || professional.galleryImages?.[0]) {
-                const imageUrl = professional.profileImageUrl || professional.galleryImages[0];
-                updateMetaTag('og:image', imageUrl);
-                updateMetaTag('twitter:image', imageUrl);
-            }
+            updateMetaTag('twitter:image', imageUrl);
         }
 
         function updateMetaTag(property, content) {
