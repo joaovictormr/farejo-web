@@ -174,11 +174,43 @@
 
         if (professionalId) {
             const deepLink = `farejo://professional/${professionalId}`;
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            const appStoreUrl = 'https://apps.apple.com/br/app/farej%C3%B4/id6746971869';
+            const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.petprojectapp';
+            const storeUrl = isiOS ? appStoreUrl : playStoreUrl;
 
-            // Tentar abrir o app automaticamente após 1 segundo
+            // Função para redirecionar para a loja de aplicativos
+            const redirectToStore = () => {
+                window.location = storeUrl;
+            };
+            
+            // Detectar se o app foi aberto
+            let appOpened = false;
+            let dialogHandled = false;
+            
+            window.addEventListener('blur', function() {
+                appOpened = true;
+            });
+
+            // Abrir o app com setTimeout para dar tempo ao usuário responder ao diálogo
+            window.location = deepLink;
+            
+            // Registrar quando o foco retorna à janela
+            window.addEventListener('focus', function() {
+                if (!appOpened && !dialogHandled) {
+                    // Se o foco retorna sem que o app tenha aberto, provavelmente o usuário clicou em "Não"
+                    dialogHandled = true;
+                    redirectToStore();
+                }
+            });
+            
+            // Se depois de 2.5 segundos, o app não foi aberto, redirecionar para a loja
             setTimeout(() => {
-                window.location = deepLink;
-            }, 1000);
+                if (!appOpened && !dialogHandled) {
+                    dialogHandled = true;
+                    redirectToStore();
+                }
+            }, 2500);
 
             // Configurar botão manual
             openAppBtn.href = deepLink;
@@ -190,11 +222,7 @@
             // Configurar botão de download
             downloadBtn.onclick = function(e) {
                 e.preventDefault();
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                    window.open('https://apps.apple.com/br/app/farej%C3%B4/id6746971869');
-                } else {
-                    window.open('https://play.google.com/store/apps/details?id=com.petprojectapp');
-                }
+                window.location = storeUrl;
             };
         }
     </script>
