@@ -5,353 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Profissional - Farejô</title>
 
-    <!-- Meta tags padrão -->
-    <meta name="description" id="meta-description" content="Conheça este profissional no Farejô - A plataforma completa para tutores de pets">
+    <!-- Meta tags para redes sociais -->
+    <meta name="description" id="meta-description" content="Descubra profissionais qualificados para cuidar do seu pet no Farejô. Veterinários, adestradores, pet sitters e muito mais. Conecte-se com especialistas de confiança perto de você.">
 
-    <!-- Meta tags Open Graph para redes sociais -->
     <meta property="og:type" content="profile">
-    <meta property="og:title" id="og-title" content="Profissional - Farejô">
-    <meta property="og:description" id="og-description" content="Conheça este profissional no Farejô">
-    <meta property="og:image" id="og-image" content="https://farejoapp.com.br/assets/images/logo-name.png">
-    <meta property="og:url" id="og-url" content="">
+    <meta property="og:title" id="og-title" content="">
+    <meta property="og:description" id="og-description" content="Descubra profissionais qualificados para cuidar do seu pet no Farejô. Veterinários, adestradores, pet sitters e muito mais perto de você.">
+    <meta property="og:image" content="https://farejoapp.com.br/assets/images/icon.png">
+    <meta property="og:url" content="">
     <meta property="og:site_name" content="Farejô">
 
-    <!-- Meta tags Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@farejoapp">
-    <meta name="twitter:title" id="twitter-title" content="Profissional - Farejô">
-    <meta name="twitter:description" id="twitter-description" content="Conheça este profissional no Farejô">
-    <meta name="twitter:image" id="twitter-image" content="https://farejoapp.com.br/assets/images/logo-name.png">
+    <meta name="twitter:title" id="twitter-title" content="">
+    <meta name="twitter:description" id="twitter-description" content="Descubra profissionais qualificados para cuidar do seu pet no Farejô. Veterinários, adestradores, pet sitters e muito mais perto de você.">
+    <meta name="twitter:image" content="https://farejoapp.com.br/assets/images/icon.png">
 
-    <!-- Meta tags WhatsApp -->
+    <script>
+        // Executar imediatamente para atualizar título
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const professionalName = urlParams.get('name');
+
+            if (professionalName) {
+                const decodedName = decodeURIComponent(professionalName);
+                const newTitle = `${decodedName} - Farejô`;
+
+                document.title = newTitle;
+                document.querySelector('meta[property="og:title"]').content = newTitle;
+                document.querySelector('meta[name="twitter:title"]').content = newTitle;
+            } else {
+                const fallbackTitle = "Profissional - Farejô";
+                document.title = fallbackTitle;
+                document.querySelector('meta[property="og:title"]').content = fallbackTitle;
+                document.querySelector('meta[name="twitter:title"]').content = fallbackTitle;
+            }
+        })();
+    </script>
+
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --primary-color: #4a8072;
-            --primary-dark: #3a6b5d;
-            --primary-light: #e6f2ee;
-            --background: #ffffff;
-            --surface: #f9fafb;
-            --text-primary: #374151;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-            display: flex;
-            flex-direction: column;
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #4a8072 0%, #6fc04d 100%);
             min-height: 100vh;
+            display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             text-align: center;
-            padding: 2rem;
         }
 
         .container {
-            max-width: 600px;
-            background: var(--surface);
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #374151;
             padding: 3rem 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
+            height: 100px;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), #6fc04d);
+            background: linear-gradient(135deg, #4a8072, #6fc04d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .loading {
-            margin: 2rem 0;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--border);
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        p {
+            color: #6b7280;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            font-size: 1.1rem;
         }
 
         .btn {
             display: inline-block;
             padding: 16px 32px;
-            background: var(--primary-color);
+            background: #4a8072;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 1rem;
             font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
         }
 
         .btn:hover {
-            background: var(--primary-dark);
+            background: #3a6b5d;
             transform: translateY(-2px);
         }
 
-        .error {
-            color: #ef4444;
-            background: #fef2f2;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #fecaca;
-            margin: 1rem 0;
+        .btn-secondary {
+            background: transparent;
+            color: #4a8072;
+            border: 2px solid #4a8072;
         }
 
-        .professional-info {
-            text-align: left;
-            margin: 2rem 0;
+        .btn-secondary:hover {
+            background: #4a8072;
+            color: white;
         }
 
-        .professional-info h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .professional-info p {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .professional-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 4px solid var(--primary-light);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin: 1rem;
-                padding: 2rem 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
+        .loading {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin: 1rem 0 2rem 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">🐾</div>
-        <h1>Farejô</h1>
-        <p class="subtitle">Conectando você ao mundo pet</p>
-
-        <div class="loading">
-            <div class="spinner"></div>
-            <p>Carregando informações do profissional...</p>
-        </div>
-
-        <div id="professional-content" style="display: none;">
-            <div id="professional-info" class="professional-info"></div>
-            <a href="#" id="open-app-btn" class="btn">Abrir no Farejô</a>
-        </div>
-
-        <div id="error-content" style="display: none;">
-            <div class="error">
-                <p><strong>Ops!</strong> Não foi possível carregar as informações do profissional.</p>
-            </div>
-            <a href="/" class="btn">Voltar ao Início</a>
-        </div>
+        <img src="assets/images/logo-name.png" alt="Farejô" class="logo">
+        <p>Abrindo o profissional no app...</p>
+        <div class="loading">Se o app não abrir automaticamente:</div>
+        <a href="#" id="open-app-btn" class="btn">Abrir no Farejô</a>
+        <a href="#" id="download-btn" class="btn btn-secondary">Baixar App</a>
     </div>
 
     <script>
-        // Extrair ID da URL ou dos parâmetros
-        function getProfessionalId() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const idFromParams = urlParams.get('id');
+        const urlParams = new URLSearchParams(window.location.search);
+        const professionalId = urlParams.get('id');
+        const professionalName = urlParams.get('name');
+        const openAppBtn = document.getElementById('open-app-btn');
+        const downloadBtn = document.getElementById('download-btn');
 
-            if (idFromParams) {
-                return idFromParams;
-            }
+        // Atualizar título e meta tags se nome estiver disponível
+        if (professionalName) {
+            const decodedName = decodeURIComponent(professionalName);
+            const newTitle = `${decodedName} - Farejô`;
 
-            // Fallback para path-based
-            const pathSegments = window.location.pathname.split('/').filter(Boolean);
-            if (pathSegments.length >= 2 && pathSegments[0] === 'professional') {
-                return pathSegments[1];
-            }
+            // Atualizar título da página
+            document.title = newTitle;
 
-            return null;
+            // Atualizar meta tags existentes
+            const titleMetaTags = [
+                'meta[property="og:title"]',
+                'meta[name="twitter:title"]'
+            ];
+
+            titleMetaTags.forEach(selector => {
+                const tag = document.querySelector(selector);
+                if (tag) {
+                    tag.setAttribute('content', newTitle);
+                }
+            });
         }
 
-        const professionalId = getProfessionalId();
+        // Atualizar URL meta tag
+        document.querySelector('meta[property="og:url"]').content = window.location.href;
 
-        // URL da API pública
-        const API_BASE_URL = 'https://dev-api.farejoapp.com.br';
-
-        async function loadProfessionalData() {
-            if (!professionalId) {
-                showError();
-                return;
-            }
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/services/${professionalId}`);
-
-                if (!response.ok) {
-                    throw new Error('Profissional não encontrado');
-                }
-
-                const professional = await response.json();
-                displayProfessional(professional);
-                updateMetaTags(professional);
-
-            } catch (error) {
-                console.error('Erro ao carregar profissional:', error);
-                showError();
-            }
-        }
-
-        function displayProfessional(professional) {
-            const professionalInfo = document.getElementById('professional-info');
-            const openAppBtn = document.getElementById('open-app-btn');
-
-            // Encontrar imagem de perfil
-            const profileImage = professional.images?.find(img => img.type === 'PROFILE');
-            const imageUrl = profileImage?.url;
-
-            // Extrair especialidades
-            const specialities = professional.categories?.[0]?.specialities?.map(s => s.speciality.label) || [];
-
-            // Criar conteúdo do profissional
-            professionalInfo.innerHTML = `
-                ${imageUrl ?
-                    `<img src="${imageUrl}" alt="${professional.name}" class="professional-image">` :
-                    '<div class="professional-image" style="background: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🧑‍⚕️</div>'
-                }
-                <h2>${professional.name}</h2>
-                <p><strong>Especialidades:</strong> ${specialities.join(', ') || 'Não informado'}</p>
-                <p><strong>Localização:</strong> ${professional.city || 'Não informada'}, ${professional.state || ''}</p>
-                ${professional.description ? `<p><strong>Sobre:</strong> ${professional.description}</p>` : ''}
-            `;
-
-            // Configurar botão para abrir no app
+        if (professionalId) {
             const deepLink = `farejo://professional/${professionalId}`;
 
+            // Tentar abrir o app automaticamente após 1 segundo
+            setTimeout(() => {
+                window.location = deepLink;
+            }, 1000);
+
+            // Configurar botão manual
             openAppBtn.href = deepLink;
             openAppBtn.onclick = function(e) {
                 e.preventDefault();
-
-                // Tentar abrir o app
                 window.location = deepLink;
-
-                // Se não conseguir abrir o app, mostrar opções de download
-                setTimeout(() => {
-                    if (confirm('O app Farejô não está instalado. Deseja baixá-lo agora?')) {
-                        // Detectar plataforma e redirecionar para a loja correspondente
-                        if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                            window.open('https://apps.apple.com/app/farejo'); // URL da App Store
-                        } else {
-                            window.open('https://play.google.com/store/apps/details?id=com.petprojectapp'); // URL do Play Store
-                        }
-                    }
-                }, 1000);
             };
 
-            // Mostrar conteúdo
-            document.querySelector('.loading').style.display = 'none';
-            document.getElementById('professional-content').style.display = 'block';
-        }
-
-        function updateMetaTags(professional) {
-            // Encontrar imagem de perfil
-            const profileImage = professional.images?.find(img => img.type === 'PROFILE');
-            const imageUrl = profileImage?.url || 'https://farejoapp.com.br/assets/images/logo-name.png';
-
-            // Atualizar título da página
-            document.title = `${professional.name} - Farejô`;
-
-            // Atualizar meta tags
-            updateMetaTag('description', `Conheça ${professional.name} no Farejô - ${professional.description || 'Profissional do mundo pet'}`);
-            updateMetaTag('og:title', `${professional.name} - Farejô`);
-            updateMetaTag('og:description', professional.description || `Conheça ${professional.name} no Farejô`);
-            updateMetaTag('og:url', window.location.href);
-            updateMetaTag('og:image', imageUrl);
-            updateMetaTag('twitter:title', `${professional.name} - Farejô`);
-            updateMetaTag('twitter:description', professional.description || `Conheça ${professional.name} no Farejô`);
-            updateMetaTag('twitter:image', imageUrl);
-        }
-
-        function updateMetaTag(property, content) {
-            let metaTag = document.querySelector(`meta[property="${property}"]`) ||
-                         document.querySelector(`meta[name="${property}"]`);
-
-            if (!metaTag) {
-                metaTag = document.createElement('meta');
-                if (property.startsWith('og:') || property.startsWith('twitter:')) {
-                    metaTag.setAttribute('property', property);
+            // Configurar botão de download
+            downloadBtn.onclick = function(e) {
+                e.preventDefault();
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    window.open('https://apps.apple.com/br/app/farej%C3%B4/id6746971869');
                 } else {
-                    metaTag.setAttribute('name', property);
+                    window.open('https://play.google.com/store/apps/details?id=com.petprojectapp');
                 }
-                document.head.appendChild(metaTag);
-            }
-
-            metaTag.setAttribute('content', content);
+            };
         }
-
-        function showError() {
-            document.querySelector('.loading').style.display = 'none';
-            document.getElementById('error-content').style.display = 'block';
-        }
-
-        // Carregar dados ao inicializar
-        loadProfessionalData();
     </script>
 </body>
 </html>
