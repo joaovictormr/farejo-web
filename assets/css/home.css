@@ -244,6 +244,18 @@
 @media (max-width: 480px) {
   .hero__phone {
     width: 220px;
+    height: auto;
+    padding: 5px;
+    border-radius: 38px;
+     img {
+      width: 100%;
+      height: 468px;
+      object-fit: contain;
+    }
+  }
+
+  .hero__phone-screen { 
+    border-radius: 33px;
   }
 
   .hero__chip { padding: 8px 12px 8px 8px; gap: 8px; }
