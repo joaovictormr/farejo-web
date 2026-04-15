@@ -1,400 +1,316 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farejô - O app que conecta você ao mundo pet</title>
-    <meta name="description" content="Farejô - A plataforma completa para tutores de pets: encontre estabelecimentos pet-friendly, ajude na busca por pets perdidos e descubra oportunidades de adoção">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farejô — O app que conecta você ao mundo pet</title>
+  <meta name="description" content="Farejô é a plataforma completa para tutores de pets: encontre estabelecimentos pet-friendly, ajude na busca por pets perdidos, descubra eventos e oportunidades de adoção.">
+  <meta name="theme-color" content="#4a8072">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/icon.png">
-    <link rel="apple-touch-icon" href="assets/images/icon.png">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="apple-touch-icon" href="assets/images/icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4a8072;
-            --primary-dark: #3a6b5d;
-            --primary-light: #e6f2ee;
-            --background: #ffffff;
-            --surface: #f9fafb;
-            --text-primary: #374151;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --success: #6fc04d;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/home.css">
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: var(--background);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-            display: block;
-            padding: 16px 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--surface) 0%, var(--primary-light) 100%);
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--success));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .features {
-            padding: 80px 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-        }
-
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section a {
-            color: #d1d5db;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #4b5563;
-            color: #9ca3af;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Farejô — O app que conecta você ao mundo pet">
+  <meta property="og:description" content="Estabelecimentos pet-friendly, ajuda na busca por pets perdidos, eventos e adoção responsável — tudo em um app.">
+  <meta property="og:image" content="assets/images/icon.png">
+  <meta property="og:site_name" content="Farejô">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <img src="assets/images/logo-name.png" alt="Farejô">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#features">Recursos</a></li>
-                <li><a href="contact.html">Contato</a></li>
-                <li><a href="privacy.html">Privacidade</a></li>
-                <li><a href="terms.html">Termos</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header" role="banner">
+    <nav class="container site-header__nav" aria-label="Principal">
+      <a href="#home" class="site-header__logo" aria-label="Farejô — Início">
+        <img src="assets/images/logo-name.png" alt="Farejô">
+      </a>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="container">
-                <h1>O mundo pet na palma da sua mão</h1>
-                <p>Farejô é a plataforma completa para tutores de pets. Encontre estabelecimentos pet-friendly, ajude na busca por pets perdidos, descubra oportunidades de adoção e muito mais.</p>
-                <div class="cta-buttons">
-                    <a href="#features" class="btn btn-primary">Conheça os Recursos</a>
-                    <a href="contact.html" class="btn btn-secondary">Entre em Contato</a>
-                </div>
-            </div>
-        </section>
+      <ul class="site-header__links" data-menu-target>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#features">Recursos</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="privacy.html">Privacidade</a></li>
+        <li><a href="terms.html">Termos</a></li>
+      </ul>
 
-        <section class="features" id="features">
-            <div class="container">
-                <h2>Por que escolher o Farejô?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🏪</div>
-                        <h3>Estabelecimentos Pet-Friendly</h3>
-                        <p>Descubra pet shops, clínicas veterinárias, hotéis para pets, restaurantes pet-friendly e muito mais perto de você.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <h3>Busca por Pets Perdidos</h3>
-                        <p>Ajude a comunidade pet! Registre pets perdidos, relate avistamentos e contribua para reunir famílias.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏠</div>
-                        <h3>Adoção Responsável</h3>
-                        <p>Conecte-se com ONGs e abrigos para encontrar seu novo companheiro ou ajude um pet a encontrar um lar amoroso.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🎉</div>
-                        <h3>Eventos Pet</h3>
-                        <p>Fique por dentro de feiras de adoção, campanhas de vacinação, encontros de tutores e eventos especiais.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛍️</div>
-                        <h3>Produtos e Ofertas</h3>
-                        <p>Descubra produtos especiais, ofertas exclusivas e novidades para mimar seu companheiro de quatro patas.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">❤️</div>
-                        <h3>Seus Favoritos</h3>
-                        <p>Salve estabelecimentos, pets para adoção e eventos de seu interesse para acessar rapidamente quando precisar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+      <div class="site-header__cta">
+        <a href="#download" class="btn btn--primary site-header__cta-text" style="min-height:44px;padding:10px 20px;font-size:0.9375rem;">
+          Baixar app
+        </a>
+        <button class="site-header__menu" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Farejô</h4>
-                    <p>Conectando você ao mundo pet com amor, cuidado e responsabilidade.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Links Úteis</h4>
-                    <a href="#home">Início</a>
-                    <a href="#features">Recursos</a>
-                    <a href="contact.html">Contato</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <a href="privacy.html">Política de Privacidade</a>
-                    <a href="terms.html">Termos de Uso</a>
-                    <a href="delete-account.html">Apagar Conta</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Conecte-se</h4>
-                    <a href="mailto:contato@farejoapp.com.br">contato@farejoapp.com.br</a>
-                </div>
+  <main id="home">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="hero__eyebrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+            </svg>
+            Feito para tutores que amam seus pets
+          </span>
+          <h1>
+            O mundo pet na <span class="accent">palma da sua mão</span>
+          </h1>
+          <p>
+            Descubra estabelecimentos pet-friendly perto de você, ajude a comunidade a reencontrar pets perdidos e fique por dentro de eventos, ofertas e adoções — tudo em um único app.
+          </p>
+
+          <div class="hero__ctas">
+            <div class="store-badges">
+              <a href="https://apps.apple.com/br/app/farej%C3%B4/id6746971869" target="_blank" rel="noopener" class="store-badge" aria-label="Baixar Farejô na App Store">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.05 12.04c-.03-2.74 2.24-4.07 2.34-4.13-1.28-1.86-3.26-2.12-3.97-2.15-1.69-.17-3.3 1-4.16 1-.87 0-2.19-.97-3.6-.95-1.85.03-3.56 1.07-4.51 2.72-1.93 3.34-.49 8.27 1.38 10.97.92 1.32 2.01 2.81 3.42 2.76 1.38-.05 1.9-.89 3.57-.89 1.66 0 2.13.89 3.59.86 1.49-.02 2.43-1.34 3.34-2.67 1.05-1.53 1.49-3.01 1.51-3.09-.03-.01-2.9-1.11-2.93-4.43zM14.36 4.05c.76-.92 1.27-2.2 1.13-3.47-1.09.04-2.41.73-3.19 1.65-.7.81-1.31 2.11-1.15 3.36 1.21.09 2.45-.62 3.21-1.54z"/>
+                </svg>
+                <span class="store-badge__text">
+                  <span class="store-badge__top">Baixar na</span>
+                  <span class="store-badge__bottom">App Store</span>
+                </span>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.petprojectapp" target="_blank" rel="noopener" class="store-badge" aria-label="Baixar Farejô no Google Play">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#34A853" d="M3.609 1.814 13.792 12 3.61 22.186a1.992 1.992 0 0 1-.61-1.422V3.236c0-.534.235-1.04.609-1.422z"/>
+                  <path fill="#FBBC04" d="m16.81 8.992-3.018 3.008 3.024 3.024 3.643-2.066c1.036-.586 1.036-2.094 0-2.68z"/>
+                  <path fill="#EA4335" d="M3.609 1.814a2 2 0 0 1 1.97-.05l11.231 6.428-3.018 3.008z"/>
+                  <path fill="#4285F4" d="m13.792 12 3.024 3.024-11.237 6.434a2 2 0 0 1-1.97-.272z"/>
+                </svg>
+                <span class="store-badge__text">
+                  <span class="store-badge__top">Disponível no</span>
+                  <span class="store-badge__bottom">Google Play</span>
+                </span>
+              </a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
-            </div>
+            <p class="hero__store-label">Grátis · iOS &amp; Android</p>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <div class="hero__visual" aria-hidden="true">
+          <!-- Chip 1: Pets desaparecidos (MissingPetsListScreen) -->
+          <div class="hero__chip hero__chip--top">
+            <span class="hero__chip-icon hero__chip-icon--warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+            <span class="hero__chip-text">
+              <strong>Pets desaparecidos</strong>
+              <small>Ajude a reencontrá-los</small>
+            </span>
+          </div>
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backdropFilter = 'blur(20px)';
-                header.style.background = 'rgba(255, 255, 255, 0.9)';
-            } else {
-                header.style.backdropFilter = 'blur(10px)';
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
+          <!-- Chip 2: Estabelecimentos (BusinessDetailsScreen + categorias reais do app) -->
+          <div class="hero__chip hero__chip--mid">
+            <span class="hero__chip-icon hero__chip-icon--brand">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </span>
+            <span class="hero__chip-text">
+              <strong>Estabelecimentos</strong>
+              <small>Pet shops, vets, hotéis</small>
+            </span>
+          </div>
+
+          <!-- Chip 3: Profissionais (ProfessionalsScreen — aba "Serviços" do bottom tab) -->
+          <div class="hero__chip hero__chip--bot">
+            <span class="hero__chip-icon hero__chip-icon--info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="3.5"/>
+                <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/>
+                <path d="M16 5l1.5-1.5M19.5 6.5 21 5"/>
+              </svg>
+            </span>
+            <span class="hero__chip-text">
+              <strong>Profissionais pet</strong>
+              <small>Vets, banho &amp; tosa, adestradores</small>
+            </span>
+          </div>
+
+          <div class="hero__phone">
+            <img
+              src="assets/images/app-screen.jpg"
+              alt="Tela do aplicativo Farejô"
+              class="hero__phone-screen"
+              width="375"
+              height="812"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="features__head">
+          <span class="features__eyebrow">Recursos</span>
+          <h2>Tudo o que você precisa para cuidar do seu pet</h2>
+          <p class="features__sub">
+            Uma plataforma feita para conectar tutores, profissionais e estabelecimentos do universo pet.
+          </p>
+        </div>
+
+        <div class="features__grid">
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l1.5-5h15L21 9"/>
+                <path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/>
+                <path d="M9 13h6"/>
+              </svg>
+            </div>
+            <h3>Estabelecimentos pet-friendly</h3>
+            <p>Pet shops, clínicas, hotéis, parques e restaurantes que recebem seu pet de braços abertos.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="m20 20-3.5-3.5"/>
+              </svg>
+            </div>
+            <h3>Busca por pets perdidos</h3>
+            <p>Registre desaparecimentos, relate avistamentos e ajude a comunidade a reunir famílias.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.5"/>
+                <path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/>
+                <path d="M16 5l1.5-1.5M19.5 6.5 21 5"/>
+              </svg>
+            </div>
+            <h3>Profissionais pet</h3>
+            <p>Encontre veterinários, adestradores, banho &amp; tosa e cuidadores na sua região, com avaliações e contato direto.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2"/>
+                <path d="M3 10h18M8 3v4M16 3v4"/>
+              </svg>
+            </div>
+            <h3>Eventos pet</h3>
+            <p>Feiras de adoção, campanhas de vacinação e encontros de tutores reunidos em um único calendário.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/>
+                <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
+            <h3>Produtos e ofertas</h3>
+            <p>Descontos exclusivos e novidades de estabelecimentos parceiros para mimar seu companheiro.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+              </svg>
+            </div>
+            <h3>Seus favoritos</h3>
+            <p>Salve estabelecimentos, pets para adoção e eventos do seu interesse para acessar quando precisar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BANNER ============ -->
+    <section class="cta-banner" id="download">
+      <div class="container">
+        <div class="cta-banner__inner">
+          <h2>Pronto para entrar no mundo Farejô?</h2>
+          <p>Baixe gratuitamente e descubra tudo o que sua cidade tem para oferecer ao seu pet.</p>
+          <div class="store-badges">
+            <a href="https://apps.apple.com/br/app/farej%C3%B4/id6746971869" target="_blank" rel="noopener" class="store-badge" aria-label="Baixar Farejô na App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 12.04c-.03-2.74 2.24-4.07 2.34-4.13-1.28-1.86-3.26-2.12-3.97-2.15-1.69-.17-3.3 1-4.16 1-.87 0-2.19-.97-3.6-.95-1.85.03-3.56 1.07-4.51 2.72-1.93 3.34-.49 8.27 1.38 10.97.92 1.32 2.01 2.81 3.42 2.76 1.38-.05 1.9-.89 3.57-.89 1.66 0 2.13.89 3.59.86 1.49-.02 2.43-1.34 3.34-2.67 1.05-1.53 1.49-3.01 1.51-3.09-.03-.01-2.9-1.11-2.93-4.43zM14.36 4.05c.76-.92 1.27-2.2 1.13-3.47-1.09.04-2.41.73-3.19 1.65-.7.81-1.31 2.11-1.15 3.36 1.21.09 2.45-.62 3.21-1.54z"/>
+              </svg>
+              <span class="store-badge__text">
+                <span class="store-badge__top">Baixar na</span>
+                <span class="store-badge__bottom">App Store</span>
+              </span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.petprojectapp" target="_blank" rel="noopener" class="store-badge" aria-label="Baixar Farejô no Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#34A853" d="M3.609 1.814 13.792 12 3.61 22.186a1.992 1.992 0 0 1-.61-1.422V3.236c0-.534.235-1.04.609-1.422z"/>
+                <path fill="#FBBC04" d="m16.81 8.992-3.018 3.008 3.024 3.024 3.643-2.066c1.036-.586 1.036-2.094 0-2.68z"/>
+                <path fill="#EA4335" d="M3.609 1.814a2 2 0 0 1 1.97-.05l11.231 6.428-3.018 3.008z"/>
+                <path fill="#4285F4" d="m13.792 12 3.024 3.024-11.237 6.434a2 2 0 0 1-1.97-.272z"/>
+              </svg>
+              <span class="store-badge__text">
+                <span class="store-badge__top">Disponível no</span>
+                <span class="store-badge__bottom">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="assets/images/logo-name.png" alt="Farejô">
+          <p>Conectando você ao mundo pet com amor, cuidado e responsabilidade.</p>
+        </div>
+
+        <div class="site-footer__col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#download">Baixar app</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h4>Suporte</h4>
+          <ul>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="delete-account.html">Apagar conta</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacidade</a></li>
+            <li><a href="terms.html">Termos de uso</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
+        <p><a href="mailto:contato@farejoapp.com.br" style="color:#d1d5db;">contato@farejoapp.com.br</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
-</html> 
+</html>

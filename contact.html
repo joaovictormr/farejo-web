@@ -1,310 +1,362 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Farejô</title>
-    <meta name="description" content="Entre em contato com o Farejô - Estamos aqui para ajudar você e seu pet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Farejô</title>
+  <meta name="description" content="Entre em contato com a equipe do Farejô. Estamos aqui para ajudar você e seu pet.">
+  <meta name="theme-color" content="#4a8072">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/icon.png">
-    <link rel="apple-touch-icon" href="assets/images/icon.png">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="apple-touch-icon" href="assets/images/icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4a8072;
-            --primary-dark: #3a6b5d;
-            --primary-light: #e6f2ee;
-            --background: #ffffff;
-            --surface: #f9fafb;
-            --text-primary: #374151;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --success: #6fc04d;
-            --error: #ef4444;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <link rel="stylesheet" href="assets/css/main.css">
 
-        body {
-            font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-        }
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-        header {
-            background: var(--background);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-        }
+    .contact-card:hover {
+      border-color: var(--color-primary-100);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .contact-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--color-primary-100);
+      color: var(--color-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
+    .contact-card__icon svg {
+      width: 24px;
+      height: 24px;
+    }
 
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
+    .contact-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 4px;
+    }
 
-        .back-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
+    .contact-card p,
+    .contact-card a {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      word-break: break-word;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .contact-card a {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
 
-        main {
-            padding: 3rem 0;
-        }
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
 
-        .contact-hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+    /* FAQ */
+    .faq {
+      max-width: 760px;
+      margin: 0 auto;
+    }
 
-        .contact-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
+    .faq h2 {
+      text-align: center;
+      font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
 
-        .contact-hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
 
-        .contact-content {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-        }
+    .faq-question {
+      width: 100%;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.2s ease;
+    }
 
-        .contact-info {
-            background: var(--surface);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            max-width: 500px;
-            width: 100%;
-        }
+    .faq-question:hover {
+      background: var(--color-surface);
+    }
 
-        .contact-info h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
+    .faq-question svg {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
+    .faq-question[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
 
-        .info-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            width: 40px;
-            text-align: center;
-        }
-
-        .info-content h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
-        }
-
-        .info-content p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .social-link:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .faq-section {
-            margin-top: 4rem;
-        }
-
-        .faq-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-        }
-
-        .faq-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            background: white;
-            border: none;
-            width: 100%;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: var(--surface);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            color: var(--text-secondary);
-            display: none;
-        }
-
-        .faq-answer.show {
-            display: block;
-        }
-
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .contact-info {
-                padding: 2rem;
-            }
-
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
-
-            .contact-hero p {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    .faq-answer {
+      padding: 0 20px 20px;
+      color: var(--color-text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo-name.png" alt="Farejô">
-            </a>
-            <a href="index.html" class="back-link">← Voltar</a>
-        </nav>
-    </header>
+  <header class="site-header" role="banner">
+    <nav class="container site-header__nav" aria-label="Principal">
+      <a href="index.html" class="site-header__logo" aria-label="Farejô — Início">
+        <img src="assets/images/logo-name.png" alt="Farejô">
+      </a>
 
-    <main>
-        <div class="container">
-            <div class="contact-hero">
-                <h1>Entre em Contato</h1>
-                <p>Para dúvidas, sugestões ou suporte, entre em contato conosco através do nosso e-mail. Responderemos o mais breve possível!</p>
-            </div>
+      <ul class="site-header__links" data-menu-target>
+        <li><a href="index.html#home">Início</a></li>
+        <li><a href="index.html#features">Recursos</a></li>
+        <li><a href="contact.html" aria-current="page">Contato</a></li>
+        <li><a href="privacy.html">Privacidade</a></li>
+        <li><a href="terms.html">Termos</a></li>
+      </ul>
 
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Como nos Encontrar</h2>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div class="info-content">
-                            <h3>E-mail</h3>
-                            <p>contato@farejoapp.com.br</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div class="info-content">
-                            <h3>Localização</h3>
-                            <p>Fortaleza, CE, Brasil</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">💬</div>
-                        <div class="info-content">
-                            <h3>Assuntos que Atendemos</h3>
-                            <p>Suporte técnico, pets perdidos/encontrados, adoção, parcerias, feedback e muito mais!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="site-header__cta">
+        <a href="index.html#download" class="btn btn--primary site-header__cta-text" style="min-height:44px;padding:10px 20px;font-size:0.9375rem;">
+          Baixar app
+        </a>
+        <button class="site-header__menu" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__inner">
+          <span class="page-hero__eyebrow">Suporte</span>
+          <h1>Estamos aqui para ajudar</h1>
+          <p>Tem dúvidas, sugestões ou precisa de suporte? A equipe Farejô responde o mais rápido possível.</p>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
+    <section class="container container--narrow" style="padding-bottom: 32px;">
+      <div class="contact-grid">
+        <article class="contact-card">
+          <div class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+          </div>
+          <h3>E-mail</h3>
+          <p style="margin-top: 4px;">
+            <a href="mailto:contato@farejoapp.com.br">contato@farejoapp.com.br</a>
+          </p>
+          <p style="margin-top: 8px; font-size: 0.8125rem;">Resposta em até 48h úteis</p>
+        </article>
+
+        <article class="contact-card">
+          <div class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s-7-7-7-12a7 7 0 1 1 14 0c0 5-7 12-7 12z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Localização</h3>
+          <p style="margin-top: 4px;">Fortaleza, CE — Brasil</p>
+        </article>
+
+        <article class="contact-card">
+          <div class="contact-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3>Assuntos atendidos</h3>
+          <p style="margin-top: 4px;">Suporte técnico, pets perdidos, adoção, parcerias e feedback.</p>
+        </article>
+      </div>
+
+      <div class="callout callout--brand">
+        <div class="callout__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
         </div>
-    </footer>
+        <div class="callout__body">
+          <p class="callout__title">Antes de entrar em contato</p>
+          <p class="callout__text">Veja se sua dúvida está respondida nas perguntas frequentes abaixo — pode ser a forma mais rápida de resolver.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="section--sm" style="background: var(--color-surface);">
+      <div class="container">
+        <div class="faq">
+          <h2>Perguntas frequentes</h2>
 
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Como reporto um pet perdido?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Primeiro cadastre o animal: vá em <strong>Conta &rarr; Meus Animais &rarr; Adicionar Animal</strong> e preencha foto, nome, raça, cor e demais informações. Depois, na lista de Meus Animais, toque no <strong>ícone de pata</strong> ao lado do animal cadastrado e preencha o formulário de desaparecimento (título, descrição, onde e quando foi visto pela última vez, contato).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Vi um pet desaparecido. Como aviso o tutor?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Abra a lista de pets desaparecidos, encontre o pet que você viu e use a opção de relatar avistamento. Informe o local exato, data, hora e qualquer detalhe que ajude o tutor — o aviso aparece direto pra ele.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Como cadastro meu estabelecimento pet-friendly?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              No app, vá em <strong>Conta &rarr; Minhas Empresas</strong> e adicione uma nova empresa. Preencha nome, categoria (pet shop, clínica, hotel, restaurante, parque…), endereço e fotos — sua empresa aparece nas buscas dos tutores próximos.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Sou veterinário/profissional. Como crio meu perfil?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Vá em <strong>Conta &rarr; Meus Serviços</strong> para criar seu perfil profissional. Adicione as informações sobre o serviço, especialidades e contato — você aparece na aba <strong>Serviços</strong> do app.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Esqueci minha senha. O que faço?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Na tela de login do app, toque em <strong>Esqueci minha senha</strong> e siga as instruções enviadas ao seu e-mail. O link de redefinição é válido por tempo limitado.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Como deleto minha conta?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Direto pelo app: <strong>Conta &rarr; Ações da Conta &rarr; Deletar Conta</strong>. A exclusão é imediata e irreversível. Veja o passo-a-passo completo em <a href="delete-account.html">Apagar conta</a>.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" data-faq-question>
+              Quero ser parceiro do Farejô. Como funciona?
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer" data-faq-answer hidden>
+              Adoraríamos conversar! Envie um e-mail para <a href="mailto:contato@farejoapp.com.br">contato@farejoapp.com.br</a> com o assunto <strong>Parceria</strong> contando um pouco sobre o seu negócio.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="assets/images/logo-name.png" alt="Farejô">
+          <p>Conectando você ao mundo pet com amor, cuidado e responsabilidade.</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="index.html#features">Recursos</a></li>
+            <li><a href="index.html#download">Baixar app</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Suporte</h4>
+          <ul>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="delete-account.html">Apagar conta</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacidade</a></li>
+            <li><a href="terms.html">Termos de uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
+        <p><a href="mailto:contato@farejoapp.com.br" style="color:#d1d5db;">contato@farejoapp.com.br</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
-</html> 
+</html>

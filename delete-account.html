@@ -1,345 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Como Apagar sua Conta - Farejô</title>
-    <meta name="description" content="Aprenda como apagar sua conta do Farejô de forma simples e segura">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apagar Conta — Farejô</title>
+  <meta name="description" content="Aprenda como apagar sua conta do Farejô de forma simples e segura.">
+  <meta name="theme-color" content="#4a8072">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/icon.png">
-    <link rel="apple-touch-icon" href="assets/images/icon.png">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="apple-touch-icon" href="assets/images/icon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4a8072;
-            --primary-dark: #3a6b5d;
-            --primary-light: #e6f2ee;
-            --background: #ffffff;
-            --surface: #f9fafb;
-            --text-primary: #374151;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --success: #6fc04d;
-            --warning: #f59e0b;
-            --error: #ef4444;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: var(--background);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
-        .back-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 3rem 0;
-        }
-
-        .page-hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .page-hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .page-hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .content-section {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            margin-bottom: 2rem;
-        }
-
-        .content-section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-        }
-
-        .warning-box {
-            background: #fef3c7;
-            border: 1px solid var(--warning);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .warning-box h3 {
-            color: var(--warning);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .warning-box p {
-            color: #92400e;
-            font-size: 0.95rem;
-        }
-
-        .steps-list {
-            list-style: none;
-            counter-reset: step-counter;
-        }
-
-        .steps-list li {
-            counter-increment: step-counter;
-            margin-bottom: 1.5rem;
-            padding-left: 3rem;
-            position: relative;
-        }
-
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--primary-color);
-            color: white;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .steps-list li strong {
-            color: var(--primary-color);
-        }
-
-        .info-box {
-            background: #dbeafe;
-            border: 1px solid #3b82f6;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .info-box h3 {
-            color: #1d4ed8;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .info-box p {
-            color: #1e40af;
-            font-size: 0.95rem;
-        }
-
-        .contact-info {
-            background: var(--primary-light);
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .contact-info h3 {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-        }
-
-        .email-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .email-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .page-hero h1 {
-                font-size: 2rem;
-            }
-
-            .page-hero p {
-                font-size: 1.1rem;
-            }
-
-            .content-section {
-                padding: 1.5rem;
-            }
-
-            .steps-list li {
-                padding-left: 2.5rem;
-            }
-
-            .steps-list li::before {
-                width: 1.5rem;
-                height: 1.5rem;
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo-name.png" alt="Farejô">
-            </a>
-            <a href="index.html" class="back-link">← Voltar</a>
-        </nav>
-    </header>
+  <header class="site-header" role="banner">
+    <nav class="container site-header__nav" aria-label="Principal">
+      <a href="index.html" class="site-header__logo" aria-label="Farejô — Início">
+        <img src="assets/images/logo-name.png" alt="Farejô">
+      </a>
 
-    <main>
-        <div class="container">
-            <div class="page-hero">
-                <h1>Como Apagar sua Conta</h1>
-                <p>Saiba como remover permanentemente sua conta do Farejô de forma simples e segura.</p>
-            </div>
+      <ul class="site-header__links" data-menu-target>
+        <li><a href="index.html#home">Início</a></li>
+        <li><a href="index.html#features">Recursos</a></li>
+        <li><a href="contact.html">Contato</a></li>
+        <li><a href="privacy.html">Privacidade</a></li>
+        <li><a href="terms.html">Termos</a></li>
+      </ul>
 
-            <div class="warning-box">
-                <h3>⚠️ Atenção - Ação Irreversível</h3>
-                <p>Ao apagar sua conta, todos os seus dados serão removidos permanentemente e não poderão ser recuperados. Isso inclui seu perfil, pets cadastrados, favoritos, histórico de atividades e todas as informações associadas à sua conta.</p>
-            </div>
+      <div class="site-header__cta">
+        <a href="index.html#download" class="btn btn--primary site-header__cta-text" style="min-height:44px;padding:10px 20px;font-size:0.9375rem;">
+          Baixar app
+        </a>
+        <button class="site-header__menu" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-            <div class="content-section">
-                <h2>Como Apagar sua Conta</h2>
-                <p>Para garantir a segurança dos seus dados, o processo de exclusão de conta deve ser solicitado através do nosso suporte. Siga os passos abaixo:</p>
-                
-                <ol class="steps-list">
-                    <li>
-                        <strong>Faça backup dos seus dados importantes</strong><br>
-                        Antes de prosseguir, salve qualquer informação que você deseja manter, como fotos dos seus pets ou contatos importantes.
-                    </li>
-                    <li>
-                        <strong>Entre em contato conosco</strong><br>
-                        Envie um e-mail para nossa equipe de suporte solicitando a exclusão da conta.
-                    </li>
-                    <li>
-                        <strong>Forneça as informações necessárias</strong><br>
-                        No e-mail, inclua seu nome completo, e-mail cadastrado e confirme que deseja apagar definitivamente sua conta.
-                    </li>
-                    <li>
-                        <strong>Aguarde a confirmação</strong><br>
-                        Nossa equipe processará sua solicitação e enviará uma confirmação em até 48 horas.
-                    </li>
-                    <li>
-                        <strong>Exclusão concluída</strong><br>
-                        Após a confirmação, sua conta e todos os dados serão removidos permanentemente em até 7 dias úteis.
-                    </li>
-                </ol>
-            </div>
-
-            <div class="info-box">
-                <h3>💡 Antes de Apagar sua Conta</h3>
-                <p>Considere que você também pode desativar temporariamente sua conta ou ajustar suas configurações de privacidade. Se você só quer parar de receber notificações, pode gerenciar essas configurações no próprio app.</p>
-            </div>
-
-            <div class="content-section">
-                <h2>O que Acontece Após a Exclusão</h2>
-                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-                    <li>Seu perfil será completamente removido</li>
-                    <li>Todos os pets cadastrados por você serão excluídos</li>
-                    <li>Seus favoritos e histórico serão apagados</li>
-                    <li>Você não poderá mais acessar o app com essas credenciais</li>
-                    <li>Todas as suas atividades e interações serão removidas</li>
-                </ul>
-                
-                <p><strong>Importante:</strong> Se você mudar de ideia no futuro, será necessário criar uma nova conta do zero.</p>
-            </div>
-
-            <div class="contact-info">
-                <h3>Entre em Contato para Apagar sua Conta</h3>
-                <p>Envie sua solicitação de exclusão para:</p>
-                <p><a href="mailto:contato@farejoapp.com.br" class="email-link">contato@farejoapp.com.br</a></p>
-                <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
-                    Assunto sugerido: "Solicitação de Exclusão de Conta - [Seu Nome]"
-                </p>
-            </div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__inner">
+          <span class="page-hero__eyebrow">Conta</span>
+          <h1>Como apagar sua conta</h1>
+          <p>Veja o passo-a-passo para remover permanentemente sua conta do Farejô de forma simples e segura.</p>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
+    <article class="container">
+      <div class="doc">
+        <div class="callout callout--warning" role="alert">
+          <div class="callout__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <path d="M12 9v4M12 17h.01"/>
+            </svg>
+          </div>
+          <div class="callout__body">
+            <p class="callout__title">Atenção — ação irreversível</p>
+            <p class="callout__text">
+              Ao deletar sua conta, todos os dados são removidos permanentemente: perfil, animais cadastrados, empresas, contatos, favoritos e histórico de desaparecidos. Você será desconectado imediatamente e não conseguirá recuperar nada depois.
+            </p>
+          </div>
         </div>
-    </footer>
+
+        <h2>Como deletar sua conta pelo app</h2>
+        <p>O Farejô oferece a exclusão direto pelo app — em poucos toques, sem precisar de e-mail ou solicitação ao suporte.</p>
+
+        <ol class="steps">
+          <li>
+            <strong>Abra o app e faça login</strong>
+            Garanta que você está conectado com a conta que deseja deletar.
+          </li>
+          <li>
+            <strong>Acesse a aba "Conta"</strong>
+            No menu inferior do app, toque no ícone <strong>Conta</strong> (último item, à direita).
+          </li>
+          <li>
+            <strong>Role até "Ações da Conta"</strong>
+            É a última seção da tela, com os itens <strong>Sair</strong> e <strong>Deletar Conta</strong>.
+          </li>
+          <li>
+            <strong>Toque em "Deletar Conta"</strong>
+            Um aviso aparece confirmando que a ação é irreversível e que todos os dados serão removidos.
+          </li>
+          <li>
+            <strong>Confirme em "Sim, deletar minha conta"</strong>
+            Pronto — sua conta é removida na hora e você é desconectado automaticamente.
+          </li>
+        </ol>
+
+        <h2>O que é apagado</h2>
+        <ul>
+          <li>Seu perfil e foto.</li>
+          <li>Animais cadastrados em <strong>Meus Animais</strong>.</li>
+          <li>Empresas cadastradas em <strong>Minhas Empresas</strong>.</li>
+          <li>Perfil profissional em <strong>Meus Serviços</strong>, se houver.</li>
+          <li>Contatos, favoritos e histórico de pets desaparecidos.</li>
+          <li>Todas as suas avaliações, interações e configurações.</li>
+        </ul>
+        <p><strong>Importante:</strong> caso mude de ideia no futuro, será necessário criar uma nova conta do zero — não conseguimos restaurar uma conta deletada.</p>
+
+        <h2>Não consegue acessar o app?</h2>
+        <p>Se você não tem mais acesso ao app (perdeu a senha, mudou de e-mail, etc.) e mesmo assim quer deletar sua conta, fale com a gente:</p>
+        <div class="callout callout--brand">
+          <div class="callout__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="m3 7 9 6 9-6"/>
+            </svg>
+          </div>
+          <div class="callout__body">
+            <p class="callout__title">Solicite a exclusão por e-mail</p>
+            <p class="callout__text">
+              Envie um e-mail para <a href="mailto:contato@farejoapp.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20Exclus%C3%A3o%20de%20Conta" style="color:var(--color-primary); font-weight:700;">contato@farejoapp.com.br</a> com seu nome completo e o e-mail cadastrado. Confirmamos o pedido e processamos a exclusão em até 7 dias úteis.
+              <br>
+              <span style="font-size: 0.875rem; color: var(--color-text-muted);">Assunto sugerido: "Solicitação de Exclusão de Conta — [Seu Nome]"</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="assets/images/logo-name.png" alt="Farejô">
+          <p>Conectando você ao mundo pet com amor, cuidado e responsabilidade.</p>
+        </div>
+        <div class="site-footer__col">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="index.html#features">Recursos</a></li>
+            <li><a href="index.html#download">Baixar app</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Suporte</h4>
+          <ul>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="delete-account.html">Apagar conta</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacidade</a></li>
+            <li><a href="terms.html">Termos de uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; 2025 Farejô. Todos os direitos reservados.</p>
+        <p><a href="mailto:contato@farejoapp.com.br" style="color:#d1d5db;">contato@farejoapp.com.br</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
-</html> 
+</html>
