@@ -269,8 +269,15 @@ button {
   }
 
   .site-header__links a {
-    display: inline-block;
-    padding: 14px 0;
+    display: block;
+    width: 100%;
+    padding: 14px 4px;
+    transition: background 0.15s ease;
+  }
+
+  .site-header__links a:hover,
+  .site-header__links a:active {
+    background: var(--color-surface);
   }
 
   .site-header__links a::after {
